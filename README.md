@@ -36,7 +36,7 @@ git clone https://github.com/alikilicw/nasdaq-stock-prices.git
 
 ### 2. Install Dependencies
 ```bash
-    pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 3. Create a Google API Project and Credentials
