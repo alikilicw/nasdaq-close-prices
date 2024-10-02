@@ -66,5 +66,5 @@ python main.py
 ## Automate the Program (Optional)
 You can schedule the script to run daily using a task scheduler.
 
--**On Linux/macOS**: Use `cron` jobs to schedule the program.
--**On Windows**: Use Task Scheduler to automate the execution of the program.
+- **On Linux/macOS**: Use `cron` jobs to schedule the program.
+- **On Windows**: Use Task Scheduler to automate the execution of the program.
