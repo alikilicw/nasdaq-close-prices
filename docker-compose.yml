@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+  nasdaq-py:
+    build:
+      context: .
+    image: nasdaq-py-image
+    container_name: nasdaq-py-container
+    ports:
+      - "8000:8000"
