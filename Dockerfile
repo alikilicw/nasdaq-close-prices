@@ -8,10 +8,10 @@ RUN apt-get update && apt-get install -y \
     unzip
 
 # Geckodriver'ı indir ve kur
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz && \
-    tar -xzf geckodriver-v0.33.0-linux64.tar.gz && \
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-linux64.tar.gz && \
+    tar -xzf geckodriver-v0.35.0-linux64.tar.gz && \
     mv geckodriver /usr/local/bin/ && \
-    rm geckodriver-v0.33.0-linux64.tar.gz
+    rm geckodriver-v0.35.0-linux64.tar.gz
 
 # Çalışma dizinini oluştur ve ayarla
 WORKDIR /app
