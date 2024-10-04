@@ -3,6 +3,8 @@ cachetools==5.5.0
 certifi==2024.8.30
 cffi==1.17.1
 charset-normalizer==3.3.2
+click==8.1.7
+colorama==0.4.6
 google-auth==2.35.0
 google-auth-oauthlib==1.2.1
 gspread==6.1.2
@@ -25,5 +27,6 @@ trio==0.26.2
 trio-websocket==0.11.1
 typing_extensions==4.12.2
 urllib3==2.2.3
+uvicorn==0.31.0
 websocket-client==1.8.0
 wsproto==1.2.0
