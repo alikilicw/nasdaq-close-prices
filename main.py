@@ -16,6 +16,7 @@ async def index():
         return JSONResponse(content={'message': 'OK.'}, status_code=200)
     
     except Exception as e:
+        print(e)
         return JSONResponse(content={'error': str(e)}, status_code=500)
 
 

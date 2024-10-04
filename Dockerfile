@@ -1,17 +1,10 @@
 # Temel imaj olarak resmi Python imajını kullanıyoruz
-FROM python:3.12.4
+FROM python:3.12-slim
 
 # Gerekli paketleri yükle
-RUN apt-get update && apt-get install -y \
-    firefox-esr \
-    wget \
-    unzip
-
-# Geckodriver'ı indir ve kur
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-linux64.tar.gz && \
-    tar -xzf geckodriver-v0.35.0-linux64.tar.gz && \
-    mv geckodriver /usr/local/bin/ && \
-    rm geckodriver-v0.35.0-linux64.tar.gz
+RUN apt update && apt install -y \
+    chromium \
+    && apt clean
 
 # Çalışma dizinini oluştur ve ayarla
 WORKDIR /app
