@@ -1,6 +1,6 @@
 # Nasdaq 100 Stock Prices Web Scraper
 
-This project is a Python-based web scraper that automatically retrieves the daily closing prices of the largest companies listed on the Nasdaq 100 index. The data is scraped from [Markets Insider Nasdaq 100 Components](https://markets.businessinsider.com/index/components/nasdaq_100) and is then written to a Google Spreadsheet for easy access and analysis.
+This project is a Python-based web scraper that automatically retrieves the daily closing prices of the largest companies listed on the Nasdaq 100 index. The data is scraped from [Markets Insider Nasdaq 100 Components](https://markets.businessinsider.com/index/components/nasdaq_100) and is then written to a Google Spreadsheet for easy access and analysis. [Click](https://docs.google.com/spreadsheets/d/1_DReqeQ5haLU_CNjYo-t9tclTaCaE40tYkkIvocnvtQ/edit?gid=0#gid=0) to reach the spreadsheet.
 
 ![Project Screenshot](image.png)
 
@@ -22,7 +22,8 @@ Before setting up and running the project, ensure you have the following:
 
 - **Python 3.12**: You can download it from [python.org](https://www.python.org/downloads/).
 - **Google Account**: To access and write data to a Google Spreadsheet.
-- **Browser Driver**: Firefox browser installed for Selenium.
+- **Browser Driver**: Chromium browser installed for Selenium.
+- **Docker (Optional)**: Docker and docker compose to run program on docker. 
 
 ## Setup Instructions
 
@@ -31,10 +32,10 @@ First, clone this repository to your local machine:
 
 ```bash
 git clone https://github.com/alikilicw/nasdaq-stock-prices.git
-
 ```
 
 ### 2. Install Dependencies
+If you will use Docker to run the program, you can pass this step.
 ```bash
 pip install -r requirements.txt
 ```
@@ -52,19 +53,24 @@ pip install -r requirements.txt
 - Open the `credentials.json` file and find the `client_email` field.
 - Share the newly created Google Spreadsheet with this `client_email` (it will look like `your-project-id@developer.gserviceaccount.com`).
 
-### 5. Update the Spreadsheet Information
+### 5. Update the Env File
 
 - Create an .env file in your project directory.
-- Create a data with name `WORKBOOK_ID`. And put your spreadsheet id in that data.
+    - `WORKBOOK_ID`: Spreadsheet id. You can find that id in your spreadsheet url. (looks like `1_DReqeW5haLU_ANjYo-t9tklTaCaE40TYkkIvocnftQ`)
+    - `DRIVER_LOCATION`: Chromium driver location in your machine.
+    - `SCHEDULER_HOUR`: At what hour does the scheduler run? (You can adjust it to 21 for Nasdaq close time.)
+    - `SCHEDULER_MINUTE`: At what minute does the scheduler run?
 
 ### 6. Run the Program
 
+For python:
 ```bash
 python main.py
 ```
 
-## Automate the Program (Optional)
-You can schedule the script to run daily using a task scheduler.
+For docker:
+```bash
+docker compose up --build -d
+```
 
-- **On Linux/macOS**: Use `cron` jobs to schedule the program.
-- **On Windows**: Use Task Scheduler to automate the execution of the program.
+### This project is developed by [github:alikilicw].
