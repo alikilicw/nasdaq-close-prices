@@ -1,10 +1,30 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from main_service import main_service
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.util import timezone
+from constants import SCHEDULER_HOUR, SCHEDULER_MINUTE
+import time
 
 # https://docs.google.com/spreadsheets/d/1_DReqeQ5haLU_CNjYo-t9tclTaCaE40tYkkIvocnvtQ/edit?gid=0#gid=0
 
-app = FastAPI()
+scheduler = BackgroundScheduler()
+
+def my_scheduled_task():
+    print(f'Scheduled task executed: {time.strftime('%Y-%m-%d %H:%M:%S')}')
+    main_service()
+
+def start_scheduler():
+    scheduler.add_job(my_scheduled_task, 'cron', hour=SCHEDULER_HOUR, minute=SCHEDULER_MINUTE, day_of_week='0,1,2,3,4,5', timezone=timezone('UTC'))
+    scheduler.start()
+
+def shutdown_scheduler():
+    scheduler.shutdown()
+
+app = FastAPI(
+    on_startup = [start_scheduler],
+    on_shutdown = [shutdown_scheduler]
+)
 
 @app.get('/index')
 async def index():
