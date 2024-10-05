@@ -10,11 +10,11 @@ import time
 
 scheduler = BackgroundScheduler()
 
-print(SCHEDULER_HOUR, 'SCHEDULER_HOUR')
-print(SCHEDULER_MINUTE, 'SCHEDULER_MINUTE')
+print(SCHEDULER_HOUR, 'SCHEDULER_HOUR', flush=True)
+print(SCHEDULER_MINUTE, 'SCHEDULER_MINUTE', flush=True)
 
 def my_scheduled_task():
-    print(f'Scheduled task executed: {time.strftime('%Y-%m-%d %H:%M:%S')}')
+    print(f'Scheduled task executed: {time.strftime('%Y-%m-%d %H:%M:%S')}', flush=True)
     main_service()
 
 def start_scheduler():
